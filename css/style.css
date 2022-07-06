@@ -17,9 +17,9 @@ html {
   overflow-x: hidden;
 }
 
-.sub-heading {
+.subheading {
   color: var(--text-black);
-  font-family: "Nigante", sans-serif;
+  font-family: "Varguina", sans-serif;
   font-size: 40px;
   font-weight: 400;
   display: flex;
@@ -27,7 +27,7 @@ html {
   gap: 10px;
   line-height: 1;
 }
-.sub-heading:hover .star {
+.subheading:hover .star {
   animation-play-state: paused;
 }
 
@@ -37,8 +37,8 @@ a {
 }
 
 .star {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,15 +46,8 @@ a {
 }
 
 .star img {
-  width: 16px;
-  height: 16px;
-}
-
-.hr {
-  height: 1px;
-  background-color: var(--hr-line);
-  width: 100%;
-  flex-shrink: 2;
+  width: 24px;
+  height: 24px;
 }
 
 .social-links {
@@ -94,11 +87,59 @@ a {
 
 /* ==== Main Styles ==== */
 body {
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1;
   background-color: var(--background);
   color: var(--text-black);
-  transition: background-color 0.5s ease;
+  transition: 0.5s ease;
+  transition-property: background-color, color;
+}
+
+/* ==== Rotating Effect ==== */
+@keyframes rotateItem {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollingTools {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollingToolsMobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-480%);
+  }
+}
+
+@keyframes scrollingCerts {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+
+@keyframes scrollingCertsMobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-510%);
+  }
 }
