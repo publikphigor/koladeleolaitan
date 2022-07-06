@@ -30,10 +30,11 @@
     <!-- <script src="js/main.js" defer></script> -->
   </head>
   <body>
+    <div class="fix-padding"></div>
     <!-- ==== sidebar ==== -->
     <div class="sidebar">
       <div class="theme-toggle">
-        <img src="assets/theme-l.svg" alt="Theme toggle" />
+        <img src="assets/theme-d.svg" alt="Theme toggle" />
       </div>
       <div class="page-progress-path">
         <div class="pp-bar"></div>
@@ -61,12 +62,10 @@
         </div>
       </div>
     </div>
-    <!-- ==== container ==== -->
-    <div class="top-line"></div>
-    <div class="bottom-line"></div>
-    <div class="main-container">
-      <!-- ==== header ==== -->
-      <header>
+
+    <!-- ==== header ==== -->
+    <header>
+      <div class="header-inner">
         <div id="logo">
           <a href="index.html">
             <img
@@ -89,25 +88,38 @@
         </nav>
 
         <div class="nav-btn">
-          <a href="#" class="btn">Resume</a>
+          <a
+            href="assets/Koladele-Olaitan (FE Resume).pdf"
+            class="btn"
+            download=""
+          >
+            Resume
+          </a>
         </div>
-      </header>
+      </div>
+    </header>
 
+    <!-- ==== container ==== -->
+    <div class="main-container">
       <!-- ==== Hero ==== -->
-      <div class="hero">
+      <div class="hero" id="about">
         <!-- ==== frontend developer background ==== -->
         <div class="hero-bg"></div>
 
         <div class="hero-first-half">
-          <h1 class="hero-name">Koladele Olaitan</h1>
+          <h1 class="hero-name">
+            Koladele
+            <br />
+            Olaitan
+          </h1>
           <p class="hero-text">
             I build fascinating websites that are mobile responsive. I pay
             particular attention to SEO best practices, speed optimization and
             accesibility.
           </p>
-          <a href="mailto:koladeleolaitan@gmail.com" class="btn hero-btn">
-            Hire Me!
-          </a>
+          <div class="hero-btn">
+            <a href="mailto:koladeleolaitan@gmail.com" class="btn">Hire Me!</a>
+          </div>
         </div>
 
         <div class="hero-second-half">
@@ -115,16 +127,16 @@
         </div>
 
         <!-- ==== rotating frontend developer image ==== -->
-        <div class="hero-rotator">
+        <a href="#skills" class="hero-rotator">
           <img
             src="assets/frontend-l.png"
             alt="Koladele Olaitan - Frontend Developer"
           />
-        </div>
+        </a>
       </div>
 
       <!-- ==== Skills ==== -->
-      <div class="skills">
+      <div class="skills" id="skills">
         <div class="skill-title">
           <h2 class="subheading">
             <span class="star"><img src="assets/star-l.svg" alt="Star" /></span>
@@ -133,50 +145,65 @@
         </div>
         <div class="skill-list">
           <div class="skill-slider">
-            <h3 class="skill">
-              HTML5
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">HTML5</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              CSS3 (Sass)
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">CSS3 (Sass)</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              JavaScript
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">JavaScript</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              React (Learning)
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">React (Learning)</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              Bootstrap
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">Bootstrap</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              WordPress
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">WordPress</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              Elementor
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">Elementor</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              On-page SEO
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">On-page SEO</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
 
-            <h3 class="skill">
-              Responsive Web Design
-              <span><img src="assets/skill-line.svg" alt="Skill Line" /></span>
-            </h3>
+            <h3 class="skill">Responsive Web Design</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
+
+            <h3 class="skill">HTML5</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
+
+            <h3 class="skill">CSS3 (Sass)</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
+
+            <h3 class="skill">JavaScript</h3>
+            <span class="skill-line">
+              <img src="assets/skill-line.svg" alt="Skill Line" />
+            </span>
           </div>
         </div>
       </div>
@@ -185,7 +212,7 @@
       <div id="projects">
         <h2 class="subheading">
           <span class="star"><img src="assets/star-l.svg" alt="Star" /></span>
-          Skills
+          Recent Projects
         </h2>
 
         <div class="projects-container">
@@ -211,12 +238,15 @@
             </div>
 
             <div class="project-number" data-project-number="5">5</div>
-            <div class="timeline-path" data-timeline-number="5">
+            <div class="timeline-path d-none" data-timeline-number="5">
               <div class="timeline-fill"></div>
             </div>
           </div>
 
           <div class="project-cards-container">
+            <div class="project-cursor">
+              <img src="assets/link-l.svg" alt="Link" />
+            </div>
             <div class="project-cards-list">
               <div class="project-card" data-project="1">
                 <div class="project-img">
@@ -327,19 +357,44 @@
       <div id="contact">
         <div class="contact-first-half">
           <h2 class="subheading">
-            <span><img src="assets/star-l.svg" alt="Star" /></span>
+            <span class="star"><img src="assets/star-l.svg" alt="Star" /></span>
             Reach Out
           </h2>
           <p>For jobs, gigs, contracts, collaborations or enquires.</p>
           <div class="contact-form">
             <form action="">
-              <input type="text" id="name" />
-              <label for="name">Name</label>
-              <input type="email" id="email" />
-              <label for="email">Name</label>
-              <textarea name="message" id="" rows="5"></textarea>
-              <label for="message"></label>
-              <input type="submit" value="Send Message" />
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  autocomplete="off"
+                  placeholder=" "
+                  class="form-group-input"
+                />
+                <label for="name">Name</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  autocomplete="off"
+                  placeholder=" "
+                  class="form-group-input"
+                />
+                <label for="email">Email</label>
+              </div>
+              <div class="form-group">
+                <textarea
+                  name="message"
+                  id=""
+                  rows="5"
+                  autocomplete="off"
+                  class="form-group-input"
+                  placeholder=" "
+                ></textarea>
+                <label for="message">Message</label>
+                <input type="submit" value="Send Message" class="btn" />
+              </div>
             </form>
           </div>
         </div>
@@ -347,16 +402,16 @@
           <img src="assets/contact-l.png" alt="" />
         </div>
       </div>
-
-      <footer>
-        <p>
-          &copy;
-          <a href="https://www.linkedin.com/in/koladeleolaitan/">
-            Koladele Olaitan
-          </a>
-          - All Rights Reserved.
-        </p>
-      </footer>
     </div>
+
+    <footer>
+      <p>
+        &copy;
+        <a href="https://www.linkedin.com/in/koladeleolaitan/">
+          Koladele Olaitan
+        </a>
+        - All Rights Reserved.
+      </p>
+    </footer>
   </body>
 </html>
