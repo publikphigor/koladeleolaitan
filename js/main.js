@@ -1,12 +1,14 @@
 "use strict";
 
 // Navbar
-//const mobileNavbar = document.querySelector(".mobile-navbar");
-//const navBtn = document.querySelector(".burger");
-//const overlay = document.querySelector(".overlay");
+const mobileNavbar = document.querySelector(".mobile-navbar");
+const mobileNavbarInner = document.querySelector(".mobile-navbar-inner");
+const navBtn = document.querySelector(".burger");
+const overlay = document.querySelector(".overlay");
 
-//navBtn.addEventListener("click", openAndCloseNavbar);
-//overlay.addEventListener("click", openAndCloseNavbar);
+navBtn.addEventListener("click", openAndCloseNavbar);
+mobileNavbarInner.addEventListener("click", openAndCloseNavbar);
+overlay.addEventListener("click", openAndCloseNavbar);
 
 function openAndCloseNavbar() {
   mobileNavbar.classList.toggle("active");
@@ -18,11 +20,16 @@ function openAndCloseNavbar() {
 const root = document.documentElement;
 const themeDesktopToggleBtn = document.querySelector(".theme-toggle-desktop");
 const toggleDesktopImage = themeDesktopToggleBtn.querySelector("img");
+const themeMobileToggleBtn = document.querySelector(".theme-toggle-mobile");
+const toggleMobileImage = themeMobileToggleBtn.querySelector("img");
 const desktopLogo = document.querySelector("#logo img");
 const heroRotator = document.querySelector(".hero-rotator img");
 const twitterIcon = document.querySelector(".twitter-icon img");
 const linkedinIcon = document.querySelector(".linkedin-icon img");
 const githubIcon = document.querySelector(".github-icon img");
+const twitterIconMobile = document.querySelector(".twitter-icon-m img");
+const linkedinIconMobile = document.querySelector(".linkedin-icon-m img");
+const githubIconMobile = document.querySelector(".github-icon-m img");
 const skillLines = document.querySelectorAll(".skill-line img");
 const stars = document.querySelectorAll(".star img");
 
@@ -33,11 +40,16 @@ function setDarkTheme() {
   root.style.setProperty("--text-color", "#959595");
   themeDesktopToggleBtn.classList.toggle("dark");
   toggleDesktopImage.src = "assets/theme-l.svg";
+  themeMobileToggleBtn.classList.toggle("dark");
+  toggleMobileImage.src = "assets/theme-l.svg";
   desktopLogo.src = "assets/logo-d.png";
   heroRotator.src = "assets/frontend-d.png";
   twitterIcon.src = "assets/twitter-d.svg";
   linkedinIcon.src = "assets/linkedin-d.svg";
   githubIcon.src = "assets/github-d.svg";
+  twitterIconMobile.src = "assets/twitter-d.svg";
+  linkedinIconMobile.src = "assets/linkedin-d.svg";
+  githubIconMobile.src = "assets/github-d.svg";
   skillLines.forEach((line) => {
     line.src = "assets/skill-line-d.svg";
   });
@@ -53,11 +65,16 @@ function setLightTheme() {
   root.style.setProperty("--text-color", "#4d4d4d");
   themeDesktopToggleBtn.classList.toggle("dark");
   toggleDesktopImage.src = "assets/theme-d.svg";
+  themeMobileToggleBtn.classList.toggle("dark");
+  toggleMobileImage.src = "assets/theme-d.svg";
   desktopLogo.src = "assets/logo-l.png";
   heroRotator.src = "assets/frontend-l.png";
   twitterIcon.src = "assets/twitter-l.svg";
   linkedinIcon.src = "assets/linkedin-l.svg";
   githubIcon.src = "assets/github-l.svg";
+  twitterIconMobile.src = "assets/twitter-l.svg";
+  linkedinIconMobile.src = "assets/linkedin-l.svg";
+  githubIconMobile.src = "assets/github-l.svg";
   skillLines.forEach((line) => {
     line.src = "assets/skill-line-l.svg";
   });
@@ -67,6 +84,14 @@ function setLightTheme() {
 }
 
 themeDesktopToggleBtn.addEventListener("click", function () {
+  if (themeDesktopToggleBtn.classList.contains("dark")) {
+    setDarkTheme();
+  } else {
+    setLightTheme();
+  }
+});
+
+themeMobileToggleBtn.addEventListener("click", function () {
   if (themeDesktopToggleBtn.classList.contains("dark")) {
     setDarkTheme();
   } else {
