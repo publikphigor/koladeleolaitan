@@ -1,12 +1,12 @@
 "use strict";
 
 // Navbar
-const mobileNavbar = document.querySelector(".mobile-navbar");
-const navBtn = document.querySelector(".burger");
-const overlay = document.querySelector(".overlay");
+//const mobileNavbar = document.querySelector(".mobile-navbar");
+//const navBtn = document.querySelector(".burger");
+//const overlay = document.querySelector(".overlay");
 
-navBtn.addEventListener("click", openAndCloseNavbar);
-overlay.addEventListener("click", openAndCloseNavbar);
+//navBtn.addEventListener("click", openAndCloseNavbar);
+//overlay.addEventListener("click", openAndCloseNavbar);
 
 function openAndCloseNavbar() {
   mobileNavbar.classList.toggle("active");
@@ -16,63 +16,102 @@ function openAndCloseNavbar() {
 
 // Theme Selection
 const root = document.documentElement;
-const themeToggleBtn = document.querySelector(".theme-toggle");
-const toggleImage = themeToggleBtn.querySelector("img");
-const rotatingCup = document.querySelector(".emma-image");
-const tagBefore = document.querySelector(".tag-before");
-const tagAfter = document.querySelector(".tag-after");
-const contactImage = document.querySelector(".contact-image");
-const projectImage = document.querySelector(".project-image.green-bg");
+const themeDesktopToggleBtn = document.querySelector(".theme-toggle-desktop");
+const toggleDesktopImage = themeDesktopToggleBtn.querySelector("img");
+const desktopLogo = document.querySelector("#logo img");
+const heroRotator = document.querySelector(".hero-rotator img");
+const twitterIcon = document.querySelector(".twitter-icon img");
+const linkedinIcon = document.querySelector(".linkedin-icon img");
+const githubIcon = document.querySelector(".github-icon img");
+const skillLines = document.querySelectorAll(".skill-line img");
+const stars = document.querySelectorAll(".star img");
 
 function setDarkTheme() {
   root.style.setProperty("--background", "rgba(0,0,0, 0.99)");
-  root.style.setProperty("--text-black", "#ffffff");
-  toggleImage.src = "assets/theme-2.svg";
-  rotatingCup.classList.remove("light");
-  rotatingCup.classList.add("dark");
-  tagBefore.classList.remove("light");
-  tagBefore.classList.add("dark");
-  tagAfter.classList.remove("light");
-  tagAfter.classList.add("dark");
-  contactImage.classList.remove("light");
-  contactImage.classList.add("dark");
-  projectImage.classList.remove("light");
-  projectImage.classList.add("dark");
-  themeToggleBtn.classList.toggle("dark");
+  root.style.setProperty("--black", "#ffffff");
+  root.style.setProperty("--white", "#000000");
+  root.style.setProperty("--text-color", "#959595");
+  themeDesktopToggleBtn.classList.toggle("dark");
+  toggleDesktopImage.src = "assets/theme-l.svg";
+  desktopLogo.src = "assets/logo-d.png";
+  heroRotator.src = "assets/frontend-d.png";
+  twitterIcon.src = "assets/twitter-d.svg";
+  linkedinIcon.src = "assets/linkedin-d.svg";
+  githubIcon.src = "assets/github-d.svg";
+  skillLines.forEach((line) => {
+    line.src = "assets/skill-line-d.svg";
+  });
+  stars.forEach((star) => {
+    star.src = "assets/star-d.svg";
+  });
 }
 
 function setLightTheme() {
-  root.style.setProperty("--background", "#ffffff");
-  root.style.setProperty("--text-black", "#000000");
-  toggleImage.src = "assets/theme-1.svg";
-  rotatingCup.classList.add("light");
-  rotatingCup.classList.remove("dark");
-  tagBefore.classList.add("light");
-  tagBefore.classList.remove("dark");
-  tagAfter.classList.add("light");
-  tagAfter.classList.remove("dark");
-  contactImage.classList.add("light");
-  contactImage.classList.remove("dark");
-  projectImage.classList.add("light");
-  projectImage.classList.remove("dark");
-  themeToggleBtn.classList.toggle("dark");
+  root.style.setProperty("--background", "#fafafa");
+  root.style.setProperty("--black", "#000000");
+  root.style.setProperty("--white", "#ffffff");
+  root.style.setProperty("--text-color", "#4d4d4d");
+  themeDesktopToggleBtn.classList.toggle("dark");
+  toggleDesktopImage.src = "assets/theme-d.svg";
+  desktopLogo.src = "assets/logo-l.png";
+  heroRotator.src = "assets/frontend-l.png";
+  twitterIcon.src = "assets/twitter-l.svg";
+  linkedinIcon.src = "assets/linkedin-l.svg";
+  githubIcon.src = "assets/github-l.svg";
+  skillLines.forEach((line) => {
+    line.src = "assets/skill-line-l.svg";
+  });
+  stars.forEach((star) => {
+    star.src = "assets/star-l.svg";
+  });
 }
 
-themeToggleBtn.addEventListener("click", function () {
-  if (themeToggleBtn.classList.contains("dark")) {
-    setLightTheme();
-  } else {
+themeDesktopToggleBtn.addEventListener("click", function () {
+  if (themeDesktopToggleBtn.classList.contains("dark")) {
     setDarkTheme();
+  } else {
+    setLightTheme();
   }
 });
 
-rotatingCup.addEventListener("mouseover", changeColor);
-rotatingCup.addEventListener("mouseout", changeColor1);
+// projects load more
+const hiddenProjects = document.querySelectorAll(".hidden-project");
+const hiddenNumbers = document.querySelectorAll(".hidden-number");
+const hiddenPaths = document.querySelectorAll(".hidden-path");
+const loadProjectBtn = document.querySelector(".load-project");
 
-function changeColor() {
-  rotatingCup.querySelector("img").src = "assets/emma-1.png";
+loadProjectBtn.addEventListener("click", function () {
+  hiddenProjects.forEach(function (project) {
+    project.classList.remove("hide");
+    project.classList.add("show");
+  });
+
+  hiddenNumbers.forEach(function (number) {
+    number.classList.remove("hide");
+    number.classList.add("show");
+  });
+
+  hiddenPaths.forEach(function (path) {
+    path.classList.remove("hide");
+    path.classList.add("show");
+  });
+
+  loadProjectBtn.remove();
+});
+
+//progress bar
+const pageProgressBar = document.querySelector(".pp-bar");
+const pageBody = document.querySelector("body");
+const bodyHeight = pageBody.getBoundingClientRect().height;
+
+function updatePPBar() {
+  let scrollDistance = -pageBody.getBoundingClientRect().top;
+  let pageProgress = Math.floor(
+    (scrollDistance / (bodyHeight - document.documentElement.clientHeight)) *
+      100
+  );
+  console.log(pageProgress);
+  pageProgressBar.style.height = `${pageProgress}%`;
 }
 
-function changeColor1() {
-  rotatingCup.querySelector("img").src = "assets/emma.png";
-}
+window.addEventListener("scroll", updatePPBar);

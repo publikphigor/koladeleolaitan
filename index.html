@@ -27,13 +27,13 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- ====Script ==== -->
-    <!-- <script src="js/main.js" defer></script> -->
+    <script src="js/main.js" defer></script>
   </head>
   <body>
     <div class="fix-padding"></div>
     <!-- ==== sidebar ==== -->
     <div class="sidebar">
-      <div class="theme-toggle">
+      <div class="theme-toggle-desktop dark">
         <img src="assets/theme-d.svg" alt="Theme toggle" />
       </div>
       <div class="page-progress-path">
@@ -41,7 +41,10 @@
       </div>
       <div class="sidebar-social-links">
         <div class="s-link">
-          <a href="https://twitter.com/publikphigor" class="s-link-inner">
+          <a
+            href="https://twitter.com/publikphigor"
+            class="s-link-inner twitter-icon"
+          >
             <img src="assets/twitter-l.svg" alt="Twiter Icon" />
           </a>
         </div>
@@ -49,14 +52,17 @@
         <div class="s-link">
           <a
             href="https://www.linkedin.com/in/koladeleolaitan/"
-            class="s-link-inner"
+            class="s-link-inner linkedin-icon"
           >
             <img src="assets/linkedin-l.svg" alt="LinkedIn Icon" />
           </a>
         </div>
 
         <div class="s-link">
-          <a href="https://github.com/publikphigor/" class="s-link-inner">
+          <a
+            href="https://github.com/publikphigor/"
+            class="s-link-inner github-icon"
+          >
             <img src="assets/github-l.svg" alt="GitHub Icon" />
           </a>
         </div>
@@ -147,62 +153,62 @@
           <div class="skill-slider">
             <h3 class="skill">HTML5</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">CSS3 (Sass)</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">JavaScript</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">React (Learning)</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">Bootstrap</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">WordPress</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">Elementor</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">On-page SEO</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">Responsive Web Design</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">HTML5</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">CSS3 (Sass)</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
 
             <h3 class="skill">JavaScript</h3>
             <span class="skill-line">
-              <img src="assets/skill-line.svg" alt="Skill Line" />
+              <img src="assets/skill-line-l.svg" alt="Skill Line" />
             </span>
           </div>
         </div>
@@ -238,8 +244,44 @@
             </div>
 
             <div class="project-number" data-project-number="5">5</div>
-            <div class="timeline-path d-none" data-timeline-number="5">
+            <div
+              class="timeline-path d-none hidden-path"
+              data-timeline-number="5"
+            >
               <div class="timeline-fill"></div>
+            </div>
+
+            <div
+              class="project-number hide hidden-number"
+              data-project-number="5"
+            >
+              6
+            </div>
+            <div
+              class="timeline-path hide hidden-path"
+              data-timeline-number="6"
+            >
+              <div class="timeline-fill"></div>
+            </div>
+
+            <div
+              class="project-number hide hidden-number"
+              data-project-number="7"
+            >
+              7
+            </div>
+            <div
+              class="timeline-path hide hidden-path"
+              data-timeline-number="8"
+            >
+              <div class="timeline-fill"></div>
+            </div>
+
+            <div
+              class="project-number hide hidden-number"
+              data-project-number="8"
+            >
+              8
             </div>
           </div>
 
@@ -329,6 +371,66 @@
               </div>
 
               <div class="project-card" data-project="5">
+                <div class="project-img">
+                  <img src="assets/project.png" alt="Project Image" />
+                </div>
+
+                <div class="project-details">
+                  <h3 class="project-name">Emmanuel Adeleye (Portfolio)</h3>
+                  <p class="project-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas impedit facere eveniet rerum reprehenderit et provident
+                    iste, eligendi veniam voluptas.
+                  </p>
+                  <div class="project-tools">
+                    <span>HTML5</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card hide hidden-project" data-project="6">
+                <div class="project-img">
+                  <img src="assets/project.png" alt="Project Image" />
+                </div>
+
+                <div class="project-details">
+                  <h3 class="project-name">Emmanuel Adeleye (Portfolio)</h3>
+                  <p class="project-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas impedit facere eveniet rerum reprehenderit et provident
+                    iste, eligendi veniam voluptas.
+                  </p>
+                  <div class="project-tools">
+                    <span>HTML5</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card hide hidden-project" data-project="7">
+                <div class="project-img">
+                  <img src="assets/project.png" alt="Project Image" />
+                </div>
+
+                <div class="project-details">
+                  <h3 class="project-name">Emmanuel Adeleye (Portfolio)</h3>
+                  <p class="project-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas impedit facere eveniet rerum reprehenderit et provident
+                    iste, eligendi veniam voluptas.
+                  </p>
+                  <div class="project-tools">
+                    <span>HTML5</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card hide hidden-project" data-project="8">
                 <div class="project-img">
                   <img src="assets/project.png" alt="Project Image" />
                 </div>

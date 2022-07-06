@@ -27,7 +27,7 @@ html {
 }
 
 .subheading {
-  color: var(--text-black);
+  color: var(--black);
   font-family: "Varguina", sans-serif;
   font-size: 40px;
   font-weight: 400;
@@ -42,7 +42,7 @@ html {
 
 a {
   text-decoration: none;
-  color: var(--text-black);
+  color: var(--black);
 }
 
 .btn {
@@ -99,7 +99,7 @@ a {
   align-items: center;
 }
 
-.theme-toggle {
+.theme-toggle-desktop {
   height: 32px;
   width: 32px;
   background-color: var(--black);
@@ -110,7 +110,7 @@ a {
   border-radius: 50%;
   margin-bottom: 24px;
 }
-.theme-toggle img {
+.theme-toggle-desktop img {
   width: 24px;
 }
 
@@ -126,7 +126,7 @@ a {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 20%;
+  height: 0%;
   background-color: var(--black);
 }
 
@@ -195,10 +195,11 @@ body {
   font-weight: 400;
   line-height: 1;
   background-color: var(--background);
-  color: var(--text-black);
+  color: var(--black);
   transition: 0.5s ease;
   transition-property: background-color, color;
   position: relative;
+  overscroll-behavior-y: none;
 }
 
 p {
@@ -288,7 +289,7 @@ nav a {
 
 .hero-name {
   font-family: "Varguina", sans-serif;
-  font-size: 64px;
+  font-size: 100px;
   font-weight: 400;
   margin: 0;
 }
@@ -326,6 +327,10 @@ nav a {
 }
 .hero-second-half img {
   width: 350px;
+  filter: grayscale(90%);
+}
+.hero-second-half img:hover {
+  filter: grayscale(0);
 }
 
 .hero-rotator {
@@ -348,12 +353,14 @@ nav a {
   position: absolute;
   width: 90%;
   margin-inline: auto;
-  height: 70%;
+  height: 80%;
   bottom: 100px;
-  background: url("/assets/fe-bg.png");
+  background-image: url("/assets/fe-bg.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 80%;
+  background-attachment: fixed;
+  background-size: 700px;
+  z-index: 9;
 }
 
 /* ==== skills ==== */
@@ -438,6 +445,8 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  transform: scale(0);
 }
 .project-cursor img {
   width: 20px;
@@ -493,6 +502,7 @@ nav a {
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  margin-bottom: 24px;
 }
 
 .project-card {
@@ -502,6 +512,20 @@ nav a {
   justify-content: space-between;
   align-items: center;
   gap: 32px;
+  border: 1px solid var(--black);
+}
+
+.hide {
+  display: none;
+  transform: scale(0);
+  transition: scale 0.4s ease;
+}
+
+.show {
+  display: flex;
+  transform: scale(1);
+  visibility: visible;
+  transition: scale 0.4s ease;
 }
 
 .project-img {
