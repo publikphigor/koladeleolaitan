@@ -110,7 +110,6 @@ function updatePPBar() {
     (scrollDistance / (bodyHeight - document.documentElement.clientHeight)) *
       100
   );
-  console.log(pageProgress);
   pageProgressBar.style.height = `${pageProgress}%`;
 }
 

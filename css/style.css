@@ -183,7 +183,7 @@ a {
 }
 
 @media screen and (max-width: 820px) {
-  .sub-heading {
+  .subheading {
     font-size: 24px;
   }
 }
@@ -266,6 +266,159 @@ nav a {
   font-size: 16px;
   font-family: "Varguina", sans-serif;
   font-weight: 400;
+}
+
+/* ==== Mobile Header ==== */
+.mobile-header {
+  position: fixed;
+  display: none;
+  top: 0;
+  width: 100%;
+  background-color: var(--background);
+  padding: 24px;
+  z-index: 999;
+  border-bottom: 1px solid var(--black);
+}
+.mobile-header-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.m-logo {
+  width: 50%;
+}
+.m-logo img {
+  width: 60px;
+  animation: rotateItem 5s infinite;
+}
+
+.burger {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+.burger div {
+  background-color: var(--black);
+  height: 2px;
+}
+.burger .line-1 {
+  width: 20px;
+  transition: 0.4s ease;
+}
+.burger .line-2 {
+  width: 35px;
+  transition: 0.4s ease;
+}
+
+.burger.active {
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.burger.active .line-1 {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  transform: rotate(-45deg) translateY(-50%);
+}
+.burger.active .line-2 {
+  position: absolute;
+  bottom: 50%;
+  width: 20px;
+  transform: rotate(45deg) translateY(50%);
+}
+
+.mobile-navbar {
+  width: auto;
+  height: 300px;
+  min-width: 300px;
+  max-width: 90%;
+  border: 2px solid var(--text-black);
+  border-radius: 16px;
+  padding: 16px;
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  background-color: var(--background);
+  display: none;
+  z-index: 99;
+  transform: translateY(-200%);
+  transition: 0.4s ease;
+}
+.overlay {
+  position: fixed;
+  z-index: 8;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-200%);
+  transition: 0.4s ease-in-out;
+  display: none;
+}
+
+.mobile-navbar.active,
+.overlay.active {
+  transform: translateY(0);
+}
+
+.mobile-navbar-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-navbar li {
+  list-style-type: none;
+  margin-bottom: 24px;
+}
+.mobile-navbar li a {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.mobile-navbar .social-links {
+  width: 100%;
+  justify-content: center;
+}
+
+@media screen and (max-width: 820px) {
+  body {
+    font-size: 16px;
+  }
+  .sidebar {
+    display: none;
+  }
+  .header-inner {
+    width: 95%;
+  }
+  .main-container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: block;
+  }
+
+  .main-container {
+    width: 100%;
+    border: none;
+  }
 }
 
 /* ==== hero ===== */
@@ -363,6 +516,69 @@ nav a {
   z-index: 9;
 }
 
+@media screen and (max-width: 820px) {
+  .hero {
+    height: 400px;
+  }
+
+  .hero-name {
+    font-size: 64px;
+  }
+
+  .hero-second-half img {
+    width: 300px;
+  }
+
+  .hero-rotator {
+    bottom: 30px;
+    width: 80px;
+  }
+
+  .hero-rotator img {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .hero {
+    height: auto;
+    flex-direction: column;
+    padding: 40px 24px 24px;
+  }
+  .hero-first-half,
+  .hero-second-half {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin-bottom: 32px;
+  }
+
+  .hero-first-half {
+    position: relative;
+    z-index: 9;
+    gap: 16px;
+  }
+
+  .hero-name {
+    font-size: 54px;
+  }
+
+  .hero-second-half {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg {
+    background-attachment: unset;
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: unset;
+  }
+}
+
 /* ==== skills ==== */
 .skills {
   width: 100%;
@@ -380,6 +596,7 @@ nav a {
   justify-content: flex-start;
   align-items: center;
   padding-left: 16px;
+  border-right: 1px solid var(--black);
 }
 .skill-list {
   width: 80%;
@@ -416,6 +633,30 @@ nav a {
 
 .skill-line img {
   width: 50px;
+}
+
+@media screen and (max-width: 820px) {
+  .skills {
+    height: 60px;
+  }
+  .skill {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .skill-title {
+    width: 35%;
+  }
+  .skill-list {
+    width: 65%;
+  }
+  .skill {
+    width: 80%;
+  }
+  .skill-slider {
+    animation: scrollingSkillsMobile 20s linear infinite;
+  }
 }
 
 /* ==== projects ==== */
@@ -537,6 +778,8 @@ nav a {
 
 .project-img img {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 
 .project-details {
@@ -580,6 +823,44 @@ nav a {
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+  #projects {
+    padding-inline: 24px;
+  }
+
+  .projects-container {
+    display: block;
+  }
+
+  .project-timeline {
+    display: none;
+  }
+
+  .project-cards-container {
+    padding: 0;
+  }
+
+  .project-card {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .project-img {
+    width: 100%;
+    height: 300px;
+  }
+  .project-img img {
+    display: block;
+    width: 300px;
+    margin-inline: auto;
+    height: 300px;
+  }
+
+  .project-details {
+    width: 100%;
+  }
 }
 
 #contact {
@@ -688,6 +969,35 @@ footer {
   align-items: center;
 }
 
+@media screen and (max-width: 820px) {
+  #contact {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+  #contact {
+    flex-direction: column;
+    height: auto;
+    padding: 24px;
+  }
+
+  #contact > div {
+    border: none;
+    width: 100%;
+    padding: 0;
+  }
+  .contact-second-half {
+    margin-bottom: 24px;
+  }
+}
+
 /* ==== Rotating Effect ==== */
 @keyframes rotateItem {
   from {
@@ -713,6 +1023,6 @@ footer {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-480%);
+    transform: translateX(-920%);
   }
 }
