@@ -157,7 +157,6 @@ projectCards.forEach(function (card) {
 
 function setCursor(e) {
   projectCursor.classList.add("active");
-  console.log(e);
   projectCursor.style.top = `${e.pageY}px`;
   projectCursor.style.left = `${e.pageX}px`;
 }

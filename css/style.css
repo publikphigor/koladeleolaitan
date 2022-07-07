@@ -222,6 +222,7 @@ p {
 
 .main-container {
   width: 80%;
+  max-width: 1320px;
   margin-inline: auto;
   border-inline: 1px solid var(--black);
   overflow: hidden;
@@ -289,7 +290,7 @@ nav a {
   top: 0;
   width: 100%;
   background-color: var(--background);
-  padding: 24px;
+  padding: 8px 24px;
   z-index: 999;
   border-bottom: 1px solid var(--black);
 }
@@ -351,7 +352,7 @@ nav a {
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 100px;
+  top: 70px;
   background-color: var(--background);
   z-index: 99;
   transform: translateY(-200%);
@@ -383,6 +384,10 @@ nav a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .mobile-navbar li {
@@ -1043,11 +1048,13 @@ footer {
 /* ==== Rotating Effect ==== */
 @keyframes rotateItem {
   from {
-    transform: rotate(0);
+    transform: rotate(0) scale(1);
   }
-
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1);
   }
 }
 
