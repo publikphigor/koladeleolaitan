@@ -151,8 +151,8 @@ const projectCursor = document.querySelector(".project-cursor");
 const projectCards = document.querySelectorAll(".project-card");
 
 projectCards.forEach(function (card) {
-  card.addEventListener("mouseover", setCursor);
-  card.addEventListener("mouseout", unsetCursor);
+  card.addEventListener("mousemove", setCursor);
+  card.addEventListener("mouseleave", unsetCursor);
 });
 
 function setCursor(e) {
