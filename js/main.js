@@ -33,6 +33,7 @@ const linkedinIconMobile = document.querySelector(".linkedin-icon-m img");
 const githubIconMobile = document.querySelector(".github-icon-m img");
 const skillLines = document.querySelectorAll(".skill-line img");
 const stars = document.querySelectorAll(".star img");
+const projectCursorImage = document.querySelector(".project-cursor img");
 
 function setDarkTheme() {
   root.style.setProperty("--background", "rgba(0,0,0, 0.99)");
@@ -52,6 +53,7 @@ function setDarkTheme() {
   twitterIconMobile.src = "assets/twitter-d.svg";
   linkedinIconMobile.src = "assets/linkedin-d.svg";
   githubIconMobile.src = "assets/github-d.svg";
+  projectCursorImage.src = "assets/link-d.svg";
   skillLines.forEach((line) => {
     line.src = "assets/skill-line-d.svg";
   });
@@ -78,6 +80,7 @@ function setLightTheme() {
   twitterIconMobile.src = "assets/twitter-l.svg";
   linkedinIconMobile.src = "assets/linkedin-l.svg";
   githubIconMobile.src = "assets/github-l.svg";
+  projectCursorImage.src = "assets/link-l.svg";
   skillLines.forEach((line) => {
     line.src = "assets/skill-line-l.svg";
   });
@@ -142,3 +145,23 @@ function updatePPBar() {
 }
 
 window.addEventListener("scroll", updatePPBar);
+
+// custom cursor
+const projectCursor = document.querySelector(".project-cursor");
+const projectCards = document.querySelectorAll(".project-card");
+
+projectCards.forEach(function (card) {
+  card.addEventListener("mouseover", setCursor);
+  card.addEventListener("mouseout", unsetCursor);
+});
+
+function setCursor(e) {
+  projectCursor.classList.add("active");
+  console.log(e);
+  projectCursor.style.top = `${e.pageY}px`;
+  projectCursor.style.left = `${e.pageX}px`;
+}
+
+function unsetCursor(e) {
+  projectCursor.classList.remove("active");
+}

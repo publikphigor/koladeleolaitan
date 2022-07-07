@@ -724,6 +724,11 @@ nav a {
   align-items: center;
   position: absolute;
   transform: scale(0);
+  z-index: 99;
+  pointer-events: none;
+}
+.project-cursor.active {
+  transform: translate(-50%, -50%) scale(1);
 }
 .project-cursor img {
   width: 20px;
@@ -790,6 +795,7 @@ nav a {
   align-items: center;
   gap: 32px;
   border: 1px solid var(--black);
+  cursor: none;
 }
 
 .hide {
