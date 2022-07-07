@@ -584,7 +584,7 @@ nav a {
   .hero {
     height: auto;
     flex-direction: column;
-    padding: 40px 24px 24px;
+    padding: 24px;
   }
   .hero-first-half,
   .hero-second-half {
@@ -592,6 +592,10 @@ nav a {
     border: none;
     padding: 0;
     margin-bottom: 32px;
+  }
+
+  .hero-second-half {
+    margin-bottom: 64px;
   }
 
   .hero-first-half {
@@ -617,6 +621,11 @@ nav a {
     top: 50%;
     transform: translateY(-50%);
     bottom: unset;
+  }
+
+  .hero-rotator {
+    bottom: unset;
+    top: 310px;
   }
 }
 
