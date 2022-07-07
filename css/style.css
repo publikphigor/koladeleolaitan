@@ -908,6 +908,15 @@ nav a {
   .project-details {
     width: 100%;
   }
+
+  .project-tools {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .project-tools span {
+    padding: 8px;
+    flex-shrink: 0;
+  }
 }
 
 #contact {
