@@ -23,6 +23,7 @@ const toggleDesktopImage = themeDesktopToggleBtn.querySelector("img");
 const themeMobileToggleBtn = document.querySelector(".theme-toggle-mobile");
 const toggleMobileImage = themeMobileToggleBtn.querySelector("img");
 const desktopLogo = document.querySelector("#logo img");
+const mobileLogo = document.querySelector(".m-logo img");
 const heroRotator = document.querySelector(".hero-rotator img");
 const twitterIcon = document.querySelector(".twitter-icon img");
 const linkedinIcon = document.querySelector(".linkedin-icon img");
@@ -43,6 +44,7 @@ function setDarkTheme() {
   themeMobileToggleBtn.classList.toggle("dark");
   toggleMobileImage.src = "assets/theme-l.svg";
   desktopLogo.src = "assets/logo-d.png";
+  mobileLogo.src = "assets/logo-d.png";
   heroRotator.src = "assets/frontend-d.png";
   twitterIcon.src = "assets/twitter-d.svg";
   linkedinIcon.src = "assets/linkedin-d.svg";
@@ -68,6 +70,7 @@ function setLightTheme() {
   themeMobileToggleBtn.classList.toggle("dark");
   toggleMobileImage.src = "assets/theme-d.svg";
   desktopLogo.src = "assets/logo-l.png";
+  mobileLogo.src = "assets/logo-l.png";
   heroRotator.src = "assets/frontend-l.png";
   twitterIcon.src = "assets/twitter-l.svg";
   linkedinIcon.src = "assets/linkedin-l.svg";
