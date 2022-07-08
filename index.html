@@ -28,6 +28,7 @@
 
     <!-- ====Script ==== -->
     <script src="js/main.js" defer></script>
+    <script src="js/app.js" defer></script>
   </head>
   <body>
     <div class="fix-padding"></div>
@@ -562,7 +563,7 @@
           </h2>
           <p>For jobs, gigs, contracts, collaborations or enquires.</p>
           <div class="contact-form">
-            <form action="">
+            <form onsubmit="completeSubmission">
               <div class="form-group">
                 <input
                   type="text"
