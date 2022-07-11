@@ -1066,13 +1066,16 @@ footer {
 
 /* ==== Rotating Effect ==== */
 @keyframes rotateItem {
-  from {
+  0% {
     transform: rotate(0) scale(1);
   }
   50% {
     transform: rotate(180deg) scale(1.2);
   }
-  to {
+  75% {
+    transform: rotate(360deg) scale(0.9);
+  }
+  100% {
     transform: rotate(360deg) scale(1);
   }
 }
