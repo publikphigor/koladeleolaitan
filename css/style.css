@@ -112,6 +112,7 @@ a {
 }
 .theme-toggle-desktop img {
   width: 24px;
+  height: auto;
 }
 
 .theme-toggle-mobile {
@@ -126,6 +127,7 @@ a {
 }
 .theme-toggle-mobile img {
   width: 24px;
+  height: auto;
 }
 
 .page-progress-path {
@@ -194,6 +196,7 @@ a {
 }
 .s-link-inner img {
   width: 14px;
+  height: auto;
 }
 
 @media screen and (max-width: 820px) {
@@ -256,6 +259,7 @@ header {
 #logo img {
   animation: rotateItem 5s infinite;
   width: 70px;
+  height: auto;
 }
 #logo:hover img {
   animation-play-state: paused;
@@ -305,6 +309,7 @@ nav a {
 }
 .m-logo img {
   width: 60px;
+  height: auto;
   animation: rotateItem 5s infinite;
 }
 
@@ -419,6 +424,7 @@ nav a {
 
 .mobile-social-links .s-link-inner img {
   width: 20px;
+  height: auto;
 }
 
 .mobile-social-links .s-link-inner::before {
@@ -521,6 +527,7 @@ nav a {
 }
 .hero-second-half img {
   width: 350px;
+  height: auto;
   filter: grayscale(90%);
 }
 .hero-second-half img:hover {
@@ -537,6 +544,7 @@ nav a {
 
 .hero-rotator img {
   width: 100px;
+  height: auto;
   animation: rotateItem 10s infinite;
 }
 .hero-rotator:hover img {
@@ -568,6 +576,7 @@ nav a {
 
   .hero-second-half img {
     width: 300px;
+    height: auto;
   }
 
   .hero-rotator {
@@ -577,6 +586,7 @@ nav a {
 
   .hero-rotator img {
     width: 80px;
+    height: auto;
   }
 }
 
@@ -684,6 +694,7 @@ nav a {
 
 .skill-line img {
   width: 50px;
+  height: auto;
 }
 
 @media screen and (max-width: 820px) {
@@ -747,6 +758,7 @@ nav a {
 }
 .project-cursor img {
   width: 20px;
+  height: 20px;
 }
 
 .project-timeline {
@@ -911,8 +923,8 @@ nav a {
   .project-img img {
     display: block;
     width: 300px;
-    margin-inline: auto;
     height: 300px;
+    margin-inline: auto;
   }
 
   .project-details {
@@ -1020,6 +1032,7 @@ nav a {
 }
 .contact-second-half img {
   width: 200px;
+  height: auto;
   animation: rotateItem 10s infinite;
 }
 .contact-second-half img:hover {
