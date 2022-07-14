@@ -557,7 +557,7 @@ nav a {
   margin-inline: auto;
   height: 80%;
   bottom: 100px;
-  background-image: url("/assets/fe-bg.png");
+  background-image: url("/assets/fe-bg.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
