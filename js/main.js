@@ -36,7 +36,7 @@ const stars = document.querySelectorAll(".star img");
 const projectCursorImage = document.querySelector(".project-cursor img");
 
 function setDarkTheme() {
-  root.style.setProperty("--background", "rgba(0,0,0, 0.99)");
+  root.style.setProperty("--background", "#121212");
   root.style.setProperty("--black", "#ffffff");
   root.style.setProperty("--white", "#000000");
   root.style.setProperty("--text-color", "#959595");
