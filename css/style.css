@@ -4,6 +4,7 @@
   --white: #ffffff;
   --black: #000000;
   --text-color: #4d4d4d;
+  --error-msg: #990000;
   transition: 0.4s ease;
   font-size: 16px;
 }
@@ -1023,6 +1024,7 @@ nav a {
   background-color: var(--black);
   color: var(--white);
   font-family: "Varguina", sans-serif;
+  cursor: pointer;
 }
 
 .contact-second-half {
@@ -1038,6 +1040,19 @@ nav a {
 }
 .contact-second-half img:hover {
   animation-play-state: paused;
+}
+
+.error-msg {
+  font-size: 14px;
+  color: var(--black);
+  display: none;
+}
+.error-msg.error {
+  color: var(--error-msg);
+}
+
+.error-msg.active {
+  display: block;
 }
 
 footer {
