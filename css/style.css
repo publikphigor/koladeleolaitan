@@ -991,6 +991,7 @@ nav a {
   font-family: inherit;
   font-size: inherit;
   background-color: var(--white);
+  resize: none;
 }
 
 .form-group-input {
