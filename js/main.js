@@ -164,3 +164,9 @@ function setCursor(e) {
 function unsetCursor(e) {
   projectCursor.classList.remove("active");
 }
+
+// copyright year
+const year = new Date().getFullYear();
+const yearSpan = document.querySelector("#year");
+
+yearSpan.textContent = `2022 - ${year}`;
