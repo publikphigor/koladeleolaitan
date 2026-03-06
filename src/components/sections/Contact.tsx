@@ -112,15 +112,13 @@ export default function Contact() {
     setStatus('sending')
 
     try {
-      const sendDetails = `<h2>New Email From ${formState.name}, ${formState.email}</h2><br><p>Message: ${formState.message}</p>`
-      const response = await fetch('https://koladele.vickyabiodun.com/MailServer/mail_key.php', {
+      const response = await fetch('https://formspree.io/f/xnjgqjol', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ siteName: 'Koladele Olaitan', siteSend: sendDetails }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: formState.name, email: formState.email, message: formState.message }),
       })
 
-      const data = await response.text()
-      if (data) {
+      if (response.ok) {
         setStatus('idle')
         setFormState({ name: '', email: '', message: '' })
         setErrors({})
