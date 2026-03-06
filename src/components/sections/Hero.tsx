@@ -33,18 +33,21 @@ export default function Hero() {
       .to(ctaRef.current, { y: 0, opacity: 1, duration: 0.6 }, 1.5)
       .to(scrollRef.current, { opacity: 1, duration: 0.6 }, 1.8)
 
-    // Parallax fade on scroll
-    gsap.to(sectionRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-      opacity: 0,
-      y: -100,
-      scale: 0.95,
-    })
+    // Parallax fade on scroll — only fade the content, not the section bg
+    const content = sectionRef.current.querySelector('.hero-content')
+    if (content) {
+      gsap.to(content, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+        opacity: 0,
+        y: -100,
+        scale: 0.95,
+      })
+    }
   }, { scope: sectionRef })
 
   const renderLetters = (text: string) =>
@@ -60,41 +63,43 @@ export default function Hero() {
       id="hero"
       className="min-h-screen flex flex-col items-center justify-center relative px-6 bg-white dark:bg-black overflow-hidden"
     >
-      {/* Background decorative element */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.03] dark:opacity-[0.05]">
-        <span className="font-display text-[20vw] text-black dark:text-white whitespace-nowrap">
-          FE
-        </span>
-      </div>
+      <div className="hero-content flex flex-col items-center justify-center flex-1 w-full">
+        {/* Background decorative element */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.03] dark:opacity-[0.05]">
+          <span className="font-display text-[20vw] text-black dark:text-white whitespace-nowrap">
+            FE
+          </span>
+        </div>
 
-      <div className="relative z-10 text-center max-w-5xl">
-        <div className="overflow-hidden mb-2">
-          <div ref={nameFirstRef} className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-black dark:text-white leading-[0.9] tracking-tight">
-            {renderLetters('KOLADELE')}
+        <div className="relative z-10 text-center max-w-5xl">
+          <div className="overflow-hidden mb-2">
+            <div ref={nameFirstRef} className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-black dark:text-white leading-[0.9] tracking-tight">
+              {renderLetters('KOLADELE')}
+            </div>
+          </div>
+          <div className="overflow-hidden mb-8">
+            <div ref={nameLastRef} className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-black dark:text-white leading-[0.9] tracking-tight">
+              {renderLetters('OLAITAN')}
+            </div>
+          </div>
+
+          <p
+            ref={subtitleRef}
+            className="text-sm sm:text-base md:text-lg uppercase tracking-[0.3em] text-gray-600 dark:text-gray-500 font-body mb-10"
+          >
+            Senior Frontend Engineer &middot; Technical Lead
+          </p>
+
+          <div ref={ctaRef}>
+            <Button as="a" href="#projects" variant="outline" size="lg">
+              Explore My Work
+            </Button>
           </div>
         </div>
-        <div className="overflow-hidden mb-8">
-          <div ref={nameLastRef} className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-black dark:text-white leading-[0.9] tracking-tight">
-            {renderLetters('OLAITAN')}
-          </div>
+
+        <div ref={scrollRef}>
+          <ScrollIndicator />
         </div>
-
-        <p
-          ref={subtitleRef}
-          className="text-sm sm:text-base md:text-lg uppercase tracking-[0.3em] text-gray-600 dark:text-gray-500 font-body mb-10"
-        >
-          Senior Frontend Engineer &middot; Technical Lead
-        </p>
-
-        <div ref={ctaRef}>
-          <Button as="a" href="#projects" variant="outline" size="lg">
-            Explore My Work
-          </Button>
-        </div>
-      </div>
-
-      <div ref={scrollRef}>
-        <ScrollIndicator />
       </div>
     </section>
   )
