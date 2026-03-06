@@ -55,8 +55,11 @@ export default function Experience() {
 
         {/* Horizontal scrolling track — fills remaining height */}
         <div ref={trackRef} className="flex items-stretch flex-1 will-change-transform">
-          {/* Spacer for the intro — wider on mobile for breathing room */}
-          <div className="flex-shrink-0 w-[150vw] md:w-screen h-full flex items-center justify-center">
+          {/* Empty spacer so heading is visible before intro text on mobile */}
+          <div className="flex-shrink-0 w-[100vw] md:w-0 h-full" />
+
+          {/* Intro text */}
+          <div className="flex-shrink-0 w-screen h-full flex items-center justify-center">
             <div className="text-center px-6 max-w-[80vw] md:max-w-lg">
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-600 font-body mb-4">
                 Where I&apos;ve worked
