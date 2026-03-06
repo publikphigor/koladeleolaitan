@@ -1,7 +1,7 @@
 const socialLinks = [
   { label: 'GitHub', url: 'https://github.com/publikphigor/' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/koladeleolaitan/' },
-  { label: 'Twitter', url: 'https://twitter.com/publikphigor' },
+  { label: 'X (Twitter)', url: 'https://x.com/publikphigor' },
 ]
 
 export default function Footer() {

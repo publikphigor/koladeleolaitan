@@ -1,15 +1,30 @@
-import { useRef, useState, type FormEvent } from 'react'
+import { useRef, useState, useCallback, type FormEvent } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from '../ui/Button'
+import Toast from '../ui/Toast'
 
 gsap.registerPlugin(ScrollTrigger)
+
+interface FieldErrors {
+  name?: string
+  email?: string
+  message?: string
+}
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [errors, setErrors] = useState<FieldErrors>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+  const [status, setStatus] = useState<'idle' | 'sending'>('idle')
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error'; visible: boolean }>({
+    message: '',
+    type: 'success',
+    visible: false,
+  })
+  const hideToast = useCallback(() => setToast(prev => ({ ...prev, visible: false })), [])
 
   useGSAP(() => {
     if (!sectionRef.current) return
@@ -47,14 +62,52 @@ export default function Contact() {
     }
   }, { scope: sectionRef })
 
+  const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
+
+  const validateField = (field: keyof typeof formState, value: string): string | undefined => {
+    switch (field) {
+      case 'name':
+        if (!value.trim()) return 'Name is required.'
+        if (value.trim().length < 2) return 'Name must be at least 2 characters.'
+        return undefined
+      case 'email':
+        if (!value.trim()) return 'Email is required.'
+        if (!emailRegex.test(value.trim())) return 'Please enter a valid email address.'
+        return undefined
+      case 'message':
+        if (!value.trim()) return 'Message is required.'
+        if (value.trim().length < 10) return 'Message must be at least 10 characters.'
+        return undefined
+    }
+  }
+
+  const handleChange = (field: keyof typeof formState, value: string) => {
+    setFormState(prev => ({ ...prev, [field]: value }))
+    if (touched[field]) {
+      const error = validateField(field, value)
+      setErrors(prev => ({ ...prev, [field]: error }))
+    }
+  }
+
+  const handleBlur = (field: keyof typeof formState) => {
+    setTouched(prev => ({ ...prev, [field]: true }))
+    const error = validateField(field, formState[field])
+    setErrors(prev => ({ ...prev, [field]: error }))
+  }
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-    if (!emailRegex.test(formState.email) || !formState.name || !formState.message) {
-      setStatus('error')
-      return
+    // Validate all fields
+    const newErrors: FieldErrors = {
+      name: validateField('name', formState.name),
+      email: validateField('email', formState.email),
+      message: validateField('message', formState.message),
     }
+    setErrors(newErrors)
+    setTouched({ name: true, email: true, message: true })
+
+    if (newErrors.name || newErrors.email || newErrors.message) return
 
     setStatus('sending')
 
@@ -68,11 +121,15 @@ export default function Contact() {
 
       const data = await response.text()
       if (data) {
-        setStatus('sent')
+        setStatus('idle')
         setFormState({ name: '', email: '', message: '' })
+        setErrors({})
+        setTouched({})
+        setToast({ message: 'Message sent successfully!', type: 'success', visible: true })
       }
     } catch {
-      setStatus('error')
+      setStatus('idle')
+      setToast({ message: 'Something went wrong. Please try again.', type: 'error', visible: true })
     }
   }
 
@@ -105,15 +162,21 @@ export default function Contact() {
           For jobs, gigs, contracts, collaborations, or enquiries — I&apos;d love to hear from you.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
           <div className="contact-reveal">
             <input
               type="text"
               placeholder="Your Name"
               value={formState.name}
-              onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
-              className="w-full bg-transparent border-b border-gray-400 dark:border-gray-600 py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+              onChange={(e) => handleChange('name', e.target.value)}
+              onBlur={() => handleBlur('name')}
+              className={`w-full bg-transparent border-b py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none transition-colors ${
+                errors.name ? 'border-gray-800 dark:border-gray-300' : 'border-gray-400 dark:border-gray-600 focus:border-black dark:focus:border-white'
+              }`}
             />
+            {errors.name && (
+              <p className="mt-2 text-sm text-gray-700 dark:text-gray-400 font-body">{errors.name}</p>
+            )}
           </div>
 
           <div className="contact-reveal">
@@ -121,9 +184,15 @@ export default function Contact() {
               type="email"
               placeholder="Your Email"
               value={formState.email}
-              onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
-              className="w-full bg-transparent border-b border-gray-400 dark:border-gray-600 py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+              onChange={(e) => handleChange('email', e.target.value)}
+              onBlur={() => handleBlur('email')}
+              className={`w-full bg-transparent border-b py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none transition-colors ${
+                errors.email ? 'border-gray-800 dark:border-gray-300' : 'border-gray-400 dark:border-gray-600 focus:border-black dark:focus:border-white'
+              }`}
             />
+            {errors.email && (
+              <p className="mt-2 text-sm text-gray-700 dark:text-gray-400 font-body">{errors.email}</p>
+            )}
           </div>
 
           <div className="contact-reveal">
@@ -131,21 +200,21 @@ export default function Contact() {
               placeholder="Your Message"
               rows={4}
               value={formState.message}
-              onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
-              className="w-full bg-transparent border-b border-gray-400 dark:border-gray-600 py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
+              onChange={(e) => handleChange('message', e.target.value)}
+              onBlur={() => handleBlur('message')}
+              className={`w-full bg-transparent border-b py-4 text-black dark:text-white font-body text-lg placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none transition-colors resize-none ${
+                errors.message ? 'border-gray-800 dark:border-gray-300' : 'border-gray-400 dark:border-gray-600 focus:border-black dark:focus:border-white'
+              }`}
             />
+            {errors.message && (
+              <p className="mt-2 text-sm text-gray-700 dark:text-gray-400 font-body">{errors.message}</p>
+            )}
           </div>
 
-          <div className="contact-reveal flex items-center gap-6">
+          <div className="contact-reveal">
             <Button type="submit" size="lg" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Sent!' : 'Send Message'}
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
             </Button>
-
-            {status === 'error' && (
-              <p className="text-sm text-gray-600 dark:text-gray-400 font-body">
-                Please fill in all fields with a valid email.
-              </p>
-            )}
           </div>
         </form>
 
@@ -162,6 +231,13 @@ export default function Contact() {
           </a>
         </div>
       </div>
+
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        visible={toast.visible}
+        onClose={hideToast}
+      />
     </section>
   )
 }

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import gsap from 'gsap'
 import ThemeToggle from '../ui/ThemeToggle'
 
 const navLinks = [
@@ -11,6 +12,8 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const navItemsRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -18,7 +21,49 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const closeMenu = () => setIsOpen(false)
+  // Animate mobile menu open/close
+  useEffect(() => {
+    if (!overlayRef.current || !navItemsRef.current) return
+
+    const overlay = overlayRef.current
+    const links = navItemsRef.current.querySelectorAll('.mobile-nav-link')
+
+    if (isOpen) {
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden'
+
+      gsap.to(overlay, {
+        clipPath: 'circle(150% at calc(100% - 3rem) 2.5rem)',
+        duration: 0.6,
+        ease: 'power3.inOut',
+      })
+      gsap.fromTo(
+        links,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.08, duration: 0.5, ease: 'power2.out', delay: 0.3 }
+      )
+    } else {
+      document.body.style.overflow = ''
+
+      const linksDuration = 0.2
+      const linksStagger = 0.04
+      const totalLinksTime = linksDuration + linksStagger * (links.length - 1)
+
+      gsap.to(links, {
+        y: -20, opacity: 0, stagger: linksStagger, duration: linksDuration, ease: 'power2.in',
+      })
+      gsap.to(overlay, {
+        clipPath: 'circle(0% at calc(100% - 3rem) 2.5rem)',
+        duration: 0.5,
+        ease: 'power3.inOut',
+        delay: totalLinksTime,
+      })
+    }
+
+    return () => { document.body.style.overflow = '' }
+  }, [isOpen])
+
+  const closeMenu = useCallback(() => setIsOpen(false), [])
 
   return (
     <>
@@ -57,13 +102,13 @@ export default function Header() {
               aria-label="Toggle menu"
             >
               <span
-                className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                  isOpen ? 'rotate-45 translate-y-1' : ''
+                className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 origin-center ${
+                  isOpen ? 'rotate-45 translate-y-[4px]' : ''
                 }`}
               />
               <span
-                className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                  isOpen ? '-rotate-45 -translate-y-1' : ''
+                className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 origin-center ${
+                  isOpen ? '-rotate-45 -translate-y-[4px]' : ''
                 }`}
               />
             </button>
@@ -73,17 +118,17 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-white dark:bg-black transition-all duration-500 flex flex-col items-center justify-center ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
+        ref={overlayRef}
+        className="fixed inset-0 z-40 bg-white dark:bg-black flex flex-col items-center justify-center"
+        style={{ clipPath: 'circle(0% at calc(100% - 3rem) 2.5rem)' }}
       >
-        <nav className="flex flex-col items-center gap-8">
+        <nav ref={navItemsRef} className="flex flex-col items-center gap-8">
           {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="font-display text-4xl text-black dark:text-white hover:opacity-60 transition-opacity"
+              className="mobile-nav-link font-display text-4xl text-black dark:text-white hover:opacity-60 transition-opacity opacity-0"
             >
               {link.label}
             </a>
@@ -93,7 +138,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
-            className="font-display text-4xl text-black dark:text-white hover:opacity-60 transition-opacity"
+            className="mobile-nav-link font-display text-4xl text-black dark:text-white hover:opacity-60 transition-opacity opacity-0"
           >
             Resume
           </a>
