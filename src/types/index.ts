@@ -4,6 +4,7 @@ export interface Project {
   description: string
   longDescription?: string
   image: string
+  imageDark?: string
   tools: string[]
   url: string
   github?: string

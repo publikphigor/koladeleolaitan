@@ -88,16 +88,16 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Image */}
-        <div ref={imageRef} className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 overflow-hidden">
+        <div ref={imageRef} className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 overflow-hidden rounded-3xl">
           <img
-            src="/assets/Koladele-Olaitan.webp"
+            src="/assets/koladele-olaitan.webp"
             alt="Koladele Olaitan — Senior Frontend Engineer"
             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             loading="lazy"
             width={400}
             height={533}
           />
-          <div className="absolute inset-0 border border-black/10 dark:border-white/10" />
+          <div className="absolute inset-0 border border-black/10 dark:border-white/10 rounded-3xl" />
         </div>
 
         {/* Content */}

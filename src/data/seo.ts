@@ -33,7 +33,7 @@ export const personSchema = {
   url: BASE_URL,
   email: 'koladeleolaitan@gmail.com',
   telephone: '+2348101555748',
-  image: `${BASE_URL}/assets/Koladele-Olaitan.webp`,
+  image: `${BASE_URL}/assets/koladele-olaitan.webp`,
   sameAs: [
     'https://twitter.com/publikphigor',
     'https://www.linkedin.com/in/koladeleolaitan/',

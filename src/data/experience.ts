@@ -9,10 +9,9 @@ export const experiences: Experience[] = [
     period: 'Jan 2023 - Present',
     highlights: [
       'Lead frontend engineer driving UI architecture for an AI-powered data analyst platform trusted by Duolingo, Choco, Airbyte, and BlaBlaCar, serving 50+ enterprise clients.',
-      'Architected mobile-first responsive redesign and organization-wide schedule management with server-side filtering, sorting, and pagination using Vue.js, TypeScript, and Python.',
-      'Built full-stack features across frontend and backend, including API endpoints for branding settings, empty DataFrame handling in agentic flows, and server-side pagination.',
-      'Built advanced data visualization features including cell-level conditional formatting, heatmaps, and bar charts, increasing user workflow efficiency by 60%.',
-      'Implemented infinite scroll, pull-to-load chat history, real-time chat isolation, and race condition fixes, supporting 70-100K monthly queries.',
+      'Led technical design and implementation of advanced data lineage visualization system, resulting in 60% improvement in user workflow efficiency and competitive differentiation.',
+      'Spearheaded a comprehensive redesign of the Dot application, overhauling UI/UX patterns, navigation flows, and visual hierarchy to significantly improve usability and user satisfaction.',
+      'Built full-stack features across frontend and backend using Vue.js, TypeScript, and Python, supporting 70-100K monthly queries.',
       'Led migration from TestCafe to Playwright for E2E testing and fixed CI pipeline concurrency issues, reducing flaky test failures.',
       'Reduced bundle size by 25% and improved Core Web Vitals scores by 40% through code splitting, lazy loading, and performance optimization.',
     ],

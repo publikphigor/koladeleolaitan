@@ -15,20 +15,25 @@ export default function Experience() {
     if (!wrapperRef.current || !trackRef.current || !stickyRef.current) return
 
     const track = trackRef.current
-    const totalScroll = track.scrollWidth - window.innerWidth
+    const sticky = stickyRef.current
+    const visibleWidth = sticky.offsetWidth
+    const totalScroll = track.scrollWidth - visibleWidth
 
-    // Set the wrapper height to create the scroll distance
-    // This avoids GSAP pin entirely — we use CSS sticky instead
-    gsap.set(wrapperRef.current, { height: totalScroll + window.innerHeight })
+    // Wrapper needs enough height so the user can scroll through all cards.
+    // totalScroll = horizontal distance to animate
+    // Add a small buffer so the last card sits fully visible before the section ends.
+    const buffer = visibleWidth * 0.15
+    gsap.set(wrapperRef.current, { height: totalScroll + sticky.offsetHeight + buffer })
 
     // Translate the track horizontally as user scrolls through the wrapper
+    // end offset ensures animation completes with the buffer to spare
     gsap.to(track, {
       x: -totalScroll,
       ease: 'none',
       scrollTrigger: {
         trigger: wrapperRef.current,
         start: 'top top',
-        end: 'bottom bottom',
+        end: () => `+=${totalScroll + buffer}`,
         scrub: 1,
         invalidateOnRefresh: true,
       },
@@ -39,19 +44,19 @@ export default function Experience() {
     <div ref={wrapperRef} id="experience" className="relative bg-gray-100 dark:bg-gray-950">
       <div
         ref={stickyRef}
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-20 h-[calc(100vh-5rem)] overflow-hidden flex flex-col"
       >
-        {/* Section label */}
-        <div className="absolute top-8 left-6 z-10">
+        {/* Section label — in flow, always visible */}
+        <div className="flex-shrink-0 pt-8 pb-4 px-6">
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-black dark:text-white">
             Experience
           </h2>
         </div>
 
-        {/* Horizontal scrolling track */}
-        <div ref={trackRef} className="flex items-center h-screen will-change-transform">
-          {/* Spacer for the title */}
-          <div className="flex-shrink-0 w-screen h-screen flex items-center justify-center">
+        {/* Horizontal scrolling track — fills remaining height */}
+        <div ref={trackRef} className="flex items-center flex-1 will-change-transform">
+          {/* Spacer for the intro */}
+          <div className="flex-shrink-0 w-screen h-full flex items-center justify-center">
             <div className="text-center px-6">
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-600 font-body mb-4">
                 Where I&apos;ve worked
@@ -66,7 +71,7 @@ export default function Experience() {
           {experiences.map((exp, index) => (
             <div
               key={`${exp.company}-${exp.period}`}
-              className="exp-card flex-shrink-0 w-screen h-screen flex items-center px-6 md:px-16 lg:px-24"
+              className="exp-card flex-shrink-0 w-screen h-full flex items-center px-6 md:px-16 lg:px-24"
             >
               <div className="max-w-4xl w-full">
                 {/* Card number */}

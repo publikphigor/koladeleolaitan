@@ -7,7 +7,6 @@ import { seoData } from '../data/seo'
 import SEOHead from '../components/ui/SEOHead'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
-import CustomCursor from '../components/layout/CustomCursor'
 import Button from '../components/ui/Button'
 
 export default function ProjectDetail() {
@@ -63,7 +62,6 @@ export default function ProjectDetail() {
         ogImage={seoData.home.ogImage}
         schema={projectSchema}
       />
-      <CustomCursor />
       <Header />
 
       <div ref={pageRef} className="pt-20 min-h-screen bg-white dark:bg-black">

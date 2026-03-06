@@ -1,7 +1,6 @@
 import SEOHead from '../components/ui/SEOHead'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
-import CustomCursor from '../components/layout/CustomCursor'
 import PageTransition from '../components/layout/PageTransition'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
@@ -20,7 +19,6 @@ export default function Home() {
         ogImage={seoData.home.ogImage}
         schema={[personSchema, websiteSchema]}
       />
-      <CustomCursor />
       <Header />
       <PageTransition>
         <main>
