@@ -57,11 +57,11 @@ export default function Experience() {
         <div ref={trackRef} className="flex items-stretch flex-1 will-change-transform">
           {/* Spacer for the intro — wider on mobile for breathing room */}
           <div className="flex-shrink-0 w-[150vw] md:w-screen h-full flex items-center justify-center">
-            <div className="text-center px-6">
+            <div className="text-center px-6 max-w-[80vw] md:max-w-lg">
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 dark:text-gray-600 font-body mb-4">
                 Where I&apos;ve worked
               </p>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-body max-w-lg">
+              <p className="text-base md:text-xl text-gray-600 dark:text-gray-400 font-body">
                 6+ years building products at the intersection of AI, data, and web technologies.
               </p>
             </div>

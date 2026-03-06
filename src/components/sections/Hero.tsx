@@ -33,21 +33,6 @@ export default function Hero() {
       .to(ctaRef.current, { y: 0, opacity: 1, duration: 0.6 }, 1.5)
       .to(scrollRef.current, { opacity: 1, duration: 0.6 }, 1.8)
 
-    // Parallax fade on scroll — only fade the content, not the section bg
-    const content = sectionRef.current.querySelector('.hero-content')
-    if (content) {
-      gsap.to(content, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-        opacity: 0,
-        y: -100,
-        scale: 0.95,
-      })
-    }
   }, { scope: sectionRef })
 
   const renderLetters = (text: string) =>
