@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "./styles/fonts.css";
+
+@theme {
+  --font-display: 'Varguina', sans-serif;
+  --font-body: 'Ubuntu', sans-serif;
+
+  --color-bg-light: #fafafa;
+  --color-bg-dark: #010101;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #dddddd;
+  --color-gray-400: #cccccc;
+  --color-gray-500: #999999;
+  --color-gray-600: #777777;
+  --color-gray-700: #555555;
+  --color-gray-800: #333333;
+  --color-gray-900: #1a1a1a;
+  --color-gray-950: #0a0a0a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scroll-line {
+  animation: scroll-line 1.5s ease-in-out infinite;
+}
